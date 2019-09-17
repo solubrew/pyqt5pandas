@@ -1,4 +1,6 @@
 # QtPandas
+# Modify to use PyQt5
+
 
 ### Utilities to use [pandas](https://github.com/pandas-dev/pandas)  (the data analysis/manipulation library for Python) with Qt.
 
