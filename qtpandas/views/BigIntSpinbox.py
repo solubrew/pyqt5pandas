@@ -3,19 +3,10 @@
 
 @author: Matthias Ludwig - Datalyze Solutions
 """
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import division
-from __future__ import absolute_import
 
-from builtins import super
-from builtins import int
-from builtins import str
-from future import standard_library
-standard_library.install_aliases()
-from qtpandas.compat import Qt, QtCore, QtGui
+from qtpandas.compat import Qt, QtCore, QtGui, QtWidgets
 
-class BigIntSpinbox(QtGui.QAbstractSpinBox):
+class BigIntSpinbox(QtWidgets.QAbstractSpinBox):
     """Custom spinbox for very big integers (like numpy.int64 and uint64)
 
     Attributes:
@@ -46,12 +37,10 @@ class BigIntSpinbox(QtGui.QAbstractSpinBox):
         self.setLineEdit(self._lineEdit)
 
     def value(self):
-        """
-        Getter function to _lineEdit.text. Returns 0 in case of exception.
-        """
+        """getter function to _lineEdit.text. Returns 0 in case of exception."""
         try:
             return int(self._lineEdit.text())
-        except Exception:
+        except:
             return 0
 
     def setValue(self, value):

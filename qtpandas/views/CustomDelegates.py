@@ -1,15 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import division
-from __future__ import absolute_import
-from builtins import super
-from builtins import str
-from future import standard_library
-standard_library.install_aliases()
-from qtpandas.compat import Qt, QtCore, QtGui, Signal, Slot
+from qtpandas.compat import Qt, QtCore, QtWidgets, Signal, Slot
 
 import numpy
 from qtpandas.views.BigIntSpinbox import BigIntSpinbox
@@ -47,7 +39,7 @@ def createDelegate(dtype, column, view):
     view.setItemDelegateForColumn(column, delegate)
     return delegate
 
-class BigIntSpinboxDelegate(QtGui.QItemDelegate):
+class BigIntSpinboxDelegate(QtWidgets.QItemDelegate):
     """delegate for very big integers.
 
     Attributes:
@@ -123,7 +115,7 @@ class BigIntSpinboxDelegate(QtGui.QItemDelegate):
         spinBox.setGeometry(option.rect)
 
 
-class CustomDoubleSpinboxDelegate(QtGui.QItemDelegate):
+class CustomDoubleSpinboxDelegate(QtWidgets.QItemDelegate):
     """delegate for floats.
 
     Attributes:
@@ -159,7 +151,7 @@ class CustomDoubleSpinboxDelegate(QtGui.QItemDelegate):
             option (QStyleOptionViewItem): controls how editor widget appears.
             index (QModelIndex): model data index.
         """
-        editor = QtGui.QDoubleSpinBox(parent)
+        editor = QtWidgets.QDoubleSpinBox(parent)
         try:
             editor.setMinimum(self.minimum)
             editor.setMaximum(self.maximum)
@@ -202,7 +194,7 @@ class CustomDoubleSpinboxDelegate(QtGui.QItemDelegate):
         """
         editor.setGeometry(option.rect)
 
-class TextDelegate(QtGui.QItemDelegate):
+class TextDelegate(QtWidgets.QItemDelegate):
     """delegate for all kind of text."""
 
     def __init__(self, parent=None):
@@ -221,14 +213,14 @@ class TextDelegate(QtGui.QItemDelegate):
             option (QStyleOptionViewItem): controls how editor widget appears.
             index (QModelIndex): model data index.
         """
-        editor = QtGui.QLineEdit(parent)
+        editor = QtWidgets.QLineEdit(parent)
         return editor
 
     def setEditorData(self, editor, index):
         """Sets the data to be displayed and edited by the editor from the data model item specified by the model index.
 
         Args:
-            editor (QtGui.QLineEdit): editor widget.
+            editor (QtWidgets.QLineEdit): editor widget.
             index (QModelIndex): model data index.
         """
         if index.isValid():
@@ -239,7 +231,7 @@ class TextDelegate(QtGui.QItemDelegate):
         """Gets data from the editor widget and stores it in the specified model at the item index.
 
         Args:
-            editor (QtGui.QLineEdit): editor widget.
+            editor (QtWidgets.QLineEdit): editor widget.
             model (QAbstractItemModel): parent model.
             index (QModelIndex): model data index.
         """
@@ -251,13 +243,13 @@ class TextDelegate(QtGui.QItemDelegate):
         """Updates the editor for the item specified by index according to the style option given.
 
         Args:
-            editor (QtGui.QLineEdit): editor widget.
+            editor (QtWidgets.QLineEdit): editor widget.
             option (QStyleOptionViewItem): controls how editor widget appears.
             index (QModelIndex): model data index.
         """
         editor.setGeometry(option.rect)
 
-class DtypeComboDelegate(QtGui.QStyledItemDelegate):
+class DtypeComboDelegate(QtWidgets.QStyledItemDelegate):
     """Combobox to set dtypes in a ColumnDtypeModel.
 
     Parent has to be a QTableView with a set model of type ColumnDtypeModel.
@@ -283,16 +275,16 @@ class DtypeComboDelegate(QtGui.QStyledItemDelegate):
 
         Args:
             parent (QtCore.QWidget): Defines the parent for the created editor.
-            option (QtGui.QStyleOptionViewItem): contains all the information
+            option (QtWidgets.QStyleOptionViewItem): contains all the information
                 that QStyle functions need to draw the items.
             index (QtCore.QModelIndex): The item/index which shall be edited.
 
         Returns:
-            QtGui.QWidget: he widget used to edit the item specified by index
+            QtWidgets.QWidget: he widget used to edit the item specified by index
                 for editing.
 
         """
-        combo = QtGui.QComboBox(parent)
+        combo = QtWidgets.QComboBox(parent)
         combo.addItems(SupportedDtypes.names())
         combo.currentIndexChanged.connect(self.currentIndexChanged)
         return combo
@@ -308,15 +300,14 @@ class DtypeComboDelegate(QtGui.QStyledItemDelegate):
         Signals emitted by the editor are blocked during exection of this method.
 
         Args:
-            editor (QtGui.QComboBox): The current editor for the item. Should be
-                a `QtGui.QComboBox` as defined in `createEditor`.
+            editor (QtWidgets.QComboBox): The current editor for the item. Should be
+                a `QtWidgets.QComboBox` as defined in `createEditor`.
             index (QtCore.QModelIndex): The index of the current item.
 
         """
         editor.blockSignals(True)
         data = index.data()
-        dataIndex = editor.findData(data)
-        # dataIndex = editor.findData(data, role=Qt.EditRole)
+        dataIndex = editor.findData(data, role=Qt.EditRole)
         editor.setCurrentIndex(dataIndex)
         editor.blockSignals(False)
 
@@ -324,8 +315,8 @@ class DtypeComboDelegate(QtGui.QStyledItemDelegate):
         """Updates the model after changing data in the editor.
 
         Args:
-            editor (QtGui.QComboBox): The current editor for the item. Should be
-                a `QtGui.QComboBox` as defined in `createEditor`.
+            editor (QtWidgets.QComboBox): The current editor for the item. Should be
+                a `QtWidgets.QComboBox` as defined in `createEditor`.
             model (ColumnDtypeModel): The model which holds the displayed data.
             index (QtCore.QModelIndex): The index of the current item of the model.
 
@@ -338,3 +329,5 @@ class DtypeComboDelegate(QtGui.QStyledItemDelegate):
 
         """
         self.commitData.emit(self.sender())
+
+

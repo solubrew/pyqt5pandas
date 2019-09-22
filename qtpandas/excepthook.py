@@ -1,12 +1,5 @@
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import division
-from __future__ import absolute_import
 # copied and modified from Eric IDE ( credits goes to author )
 
-from builtins import str
-from future import standard_library
-standard_library.install_aliases()
 import time
 import io
 import traceback
@@ -44,20 +37,20 @@ def excepthook(excType, excValue, tracebackobj):
     traceback.print_tb(tracebackobj, None, tbinfofile)
     tbinfofile.seek(0)
     tbinfo = tbinfofile.read()
-    if python_version < 3:
+    if python_version > 3:
         # Python3 has no str().decode()
         tbinfo = tbinfo.decode('utf-8')
     else:
         pass
 
     try:
-        if python_version < 3:
+        if python_version > 3:
             # Python3 has no str().decode()
             excValueStr = str(excValue).decode('utf-8')
         else:
             excValueStr = str(excValue)
 
-    except UnicodeEncodeError:
+    except UnicodeEncodeError as e:
         excValueStr = str(excValue)
 
     errmsg = '{0}: \n{1}'.format(excType, excValueStr)
@@ -67,7 +60,7 @@ def excepthook(excType, excValue, tracebackobj):
     try:
         msg = '\n'.join(sections)
 
-    except TypeError:
+    except TypeError as e:
         # Remove all things not string.
         sections = [item for item in sections if type(item) == str]
         msg = '\n'.join(sections)
@@ -76,7 +69,7 @@ def excepthook(excType, excValue, tracebackobj):
         f = codecs.open(logFile, "a+", encoding='utf-8')
         f.write(msg)
         f.close()
-    except IOError:
+    except IOError as e:
         msgbox("unable to write to {0}".format(logFile), "Writing error")
 
     # always show an error message
@@ -84,7 +77,7 @@ def excepthook(excType, excValue, tracebackobj):
         if not _isQAppRunning():
             app = QtGui.QApplication([])
         _showMessageBox(str(notice) + str(msg))
-    except Exception:
+    except:
         msgbox(str(notice) + str(msg), "Error")
 
 

@@ -4,18 +4,7 @@ Easy integration of DataFrame into pyqt framework
 
 @author: Jev Kuznetsov, Matthias Ludwig - Datalyze Solutions
 """
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import division
-from __future__ import absolute_import
 
-from builtins import range
-from builtins import super
-from builtins import int
-from builtins import round
-from builtins import str
-from future import standard_library
-standard_library.install_aliases()
 from datetime import datetime
 from qtpandas.utils import superReadFile
 from qtpandas.compat import Qt, QtCore, QtGui, Slot, Signal
@@ -490,7 +479,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
                     value = pandas.Timestamp(value)
                 except Exception:
                     raise Exception("Can't convert '{0}' into a datetime".format(value))
-                    # return False
+                    return False
             else:
                 raise TypeError("try to set unhandled data type")
 
@@ -554,7 +543,7 @@ class DataFrameModel(QtCore.QAbstractTableModel):
         self.layoutAboutToBeChanged.emit()
         self.sortingAboutToStart.emit()
         column = self._dataFrame.columns[columnId]
-        self._dataFrame.sort_values(column, ascending=not bool(order), inplace=True)
+        self._dataFrame.sort(column, ascending=not bool(order), inplace=True)
         self.layoutChanged.emit()
         self.sortingFinished.emit()
 

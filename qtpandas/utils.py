@@ -1,14 +1,3 @@
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import division
-from __future__ import absolute_import
-# For Python 2 compatibility
-# from __future__ import print_function
-
-from builtins import open
-from builtins import str
-from future import standard_library
-standard_library.install_aliases()
 from random import randint
 from pandas import to_datetime
 import pandas as pd
@@ -48,10 +37,10 @@ def convertTimestamps(column):
     try:
         # Try to convert the first row and a random row instead of the complete
         # column, might be faster
-        # tempValue = np.datetime64(column[0])
+        tempValue = np.datetime64(column[0])
         tempValue = np.datetime64(column[randint(0, len(column.index) - 1)])
         tempColumn = column.apply(to_datetime)
-    except Exception:
+    except:
         pass
     return tempColumn
 
@@ -71,12 +60,8 @@ def superReadCSV(filepath, first_codec='UTF_8', usecols=None,
 
         assert isinstance(first_codec, str), "first_codec must be a string"
 
-        codecs = ['UTF_8', 'ISO-8859-1', 'ASCII', 'UTF_16', 'UTF_32']
-        try:
-            codecs.remove(first_codec)
-        except ValueError as not_in_list:
-            pass
-        codecs.insert(0, first_codec)
+        codecs = list(set([first_codec] + ['UTF_8', 'ISO-8859-1', 'ASCII',
+                                           'UTF_16', 'UTF_32']))
         errors = []
         for c in codecs:
             try:
@@ -90,10 +75,8 @@ def superReadCSV(filepath, first_codec='UTF_8', usecols=None,
                                    sep=sep,
                                    chunksize=chunksize,
                                    **kwargs)
-            # Need to catch `UnicodeError` here, not just `UnicodeDecodeError`,
-            # because pandas 0.23.1 raises it when decoding with UTF_16 and the
-            # file is not in that format:
-            except (UnicodeError, UnboundLocalError) as e:
+
+            except (UnicodeDecodeError, UnboundLocalError) as e:
                 errors.append(e)
             except Exception as e:
                 errors.append(e)
