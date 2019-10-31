@@ -5,15 +5,15 @@ from __future__ import absolute_import
 from builtins import range
 from future import standard_library
 standard_library.install_aliases()
-from qtpandas.compat import QtCore, QtGui, Qt
+from qt5pandas.compat import QtCore, QtGui, Qt
 
 import pytest
 import pytestqt
 
 import pandas
 
-from qtpandas.views.DataTableView import DataTableWidget
-from qtpandas.models.DataFrameModel import DataFrameModel
+from qt5pandas.views.DataTableView import DataTableWidget
+from qt5pandas.models.DataFrameModel import DataFrameModel
 
 @pytest.fixture()
 def dataModel():

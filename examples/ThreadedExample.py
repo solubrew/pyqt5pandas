@@ -7,12 +7,12 @@ from future import standard_library
 standard_library.install_aliases()
 import sys
 import time
-from qtpandas.compat import QtCore, QtGui, Qt, Slot, Signal
+from qt5pandas.compat import QtCore, QtGui, Qt, Slot, Signal
 # import imgs
 
-from qtpandas.views.OverlayProgressView import OverlayProgressWidget
+from qt5pandas.views.OverlayProgressView import OverlayProgressWidget
 
-from qtpandas.models.ProgressThread import ProgressWorker, createThread
+from qt5pandas.models.ProgressThread import ProgressWorker, createThread
 
 
 class ExampleWorker(ProgressWorker):

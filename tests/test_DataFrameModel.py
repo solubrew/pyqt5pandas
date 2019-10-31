@@ -10,7 +10,7 @@ from future import standard_library
 standard_library.install_aliases()
 import random
 
-from qtpandas.compat import Qt, QtCore, QtGui
+from qt5pandas.compat import Qt, QtCore, QtGui
 
 import pytest
 import pytestqt
@@ -19,9 +19,9 @@ import decimal
 import numpy
 import pandas
 
-from qtpandas.models.DataFrameModel import DataFrameModel, DATAFRAME_ROLE
-from qtpandas.models.DataSearch import DataSearch
-from qtpandas.models.SupportedDtypes import SupportedDtypes
+from qt5pandas.models.DataFrameModel import DataFrameModel, DATAFRAME_ROLE
+from qt5pandas.models.DataSearch import DataSearch
+from qt5pandas.models.SupportedDtypes import SupportedDtypes
 
 
 def test_initDataFrame():

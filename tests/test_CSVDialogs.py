@@ -11,14 +11,14 @@ import pytest
 # import pytestqt
 import tempfile
 
-from qtpandas.compat import QtCore, QtGui  # ,Qt
+from qt5pandas.compat import QtCore, QtGui  # ,Qt
 
-from qtpandas.views.CSVDialogs import (
+from qt5pandas.views.CSVDialogs import (
     DelimiterValidator, DelimiterSelectionWidget,
     CSVImportDialog, CSVExportDialog
 )
 
-from qtpandas.models.DataFrameModel import DataFrameModel
+from qt5pandas.models.DataFrameModel import DataFrameModel
 
 FIXTUREDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                           'fixtures')

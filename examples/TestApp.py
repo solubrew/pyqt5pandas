@@ -15,15 +15,15 @@ import sys
 import pandas
 import numpy
 
-from qtpandas.excepthook import excepthook
-from qtpandas.compat import QtCore, QtGui, Qt, Slot, Signal
-from qtpandas.models.DataFrameModel import DataFrameModel
-from qtpandas.models.DataSearch import DataSearch
-from qtpandas.views.CSVDialogs import CSVImportDialog, CSVExportDialog
-# from qtpandas.views._ui import icons_rc
-from qtpandas.views.DataTableView import DataTableWidget
-from qtpandas.views.CustomDelegates import DtypeComboDelegate
-from qtpandas.models.mime import PandasCellMimeType, PandasCellPayload
+from qt5pandas.excepthook import excepthook
+from qt5pandas.compat import QtCore, QtGui, Qt, Slot, Signal
+from qt5pandas.models.DataFrameModel import DataFrameModel
+from qt5pandas.models.DataSearch import DataSearch
+from qt5pandas.views.CSVDialogs import CSVImportDialog, CSVExportDialog
+# from qt5pandas.views._ui import icons_rc
+from qt5pandas.views.DataTableView import DataTableWidget
+from qt5pandas.views.CustomDelegates import DtypeComboDelegate
+from qt5pandas.models.mime import PandasCellMimeType, PandasCellPayload
 from util import getCsvData, getRandomData
 
 sys.excepthook = excepthook

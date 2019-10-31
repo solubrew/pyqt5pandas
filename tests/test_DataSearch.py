@@ -7,7 +7,7 @@ from __future__ import absolute_import
 from builtins import str
 from future import standard_library
 standard_library.install_aliases()
-from qtpandas.compat import Qt, QtCore, QtGui
+from qt5pandas.compat import Qt, QtCore, QtGui
 
 
 import pytest
@@ -17,8 +17,8 @@ import decimal
 import numpy
 import pandas
 
-from qtpandas.models.DataFrameModel import DataFrameModel, DATAFRAME_ROLE
-from qtpandas.models.DataSearch import DataSearch
+from qt5pandas.models.DataFrameModel import DataFrameModel, DATAFRAME_ROLE
+from qt5pandas.models.DataSearch import DataSearch
 
 class TestDataSearch(object):
 

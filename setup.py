@@ -42,7 +42,7 @@ import sys
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-version_file = open(os.path.join(here, 'qtpandas', '__init__.py'), 'rU')
+version_file = open(os.path.join(here, 'qt5pandas', '__init__.py'), 'r')
 __version__ = re.sub(
     r".*\b__version__\s+=\s+'([^']+)'.*",
     r'\1',
@@ -93,11 +93,11 @@ tests_require = ["pandas >= 0.17.1",
                  ]
 
 setup(
-    name='qtpandas',
+    name='qt5pandas',
     version=__version__,
-    url='https://github.com/draperjames/qtpandas',
+    url='https://github.com/draperjames/qt5pandas',
     license='MIT License',
-    namespace_packages=['qtpandas'],
+    namespace_packages=['qt5pandas'],
     author='Matthias Ludwig, Marcel Radischat, Zeke Barge, James Draper',
     tests_require=tests_require,
     install_requires=[
@@ -116,7 +116,7 @@ setup(
     description=short_description,
     long_description=long_description,
     include_package_data=True,
-    packages=['qtpandas'],
+    packages=['qt5pandas'],
 
     platforms='any',
     test_suite='tests',

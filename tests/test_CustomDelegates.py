@@ -8,7 +8,7 @@ from builtins import super
 from builtins import str
 from future import standard_library
 standard_library.install_aliases()
-from qtpandas.compat import Qt, QtCore, QtGui
+from qt5pandas.compat import Qt, QtCore, QtGui
 
 
 import pytest
@@ -17,8 +17,8 @@ import pytestqt
 import numpy
 import pandas
 
-from qtpandas.views.CustomDelegates import BigIntSpinboxDelegate, CustomDoubleSpinboxDelegate, TextDelegate, createDelegate
-from qtpandas.models.DataFrameModel import DataFrameModel
+from qt5pandas.views.CustomDelegates import BigIntSpinboxDelegate, CustomDoubleSpinboxDelegate, TextDelegate, createDelegate
+from qt5pandas.models.DataFrameModel import DataFrameModel
 
 class DemoTableView(QtGui.QTableView):
 

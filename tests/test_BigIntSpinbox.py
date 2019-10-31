@@ -8,11 +8,11 @@ from builtins import str
 from builtins import int
 from future import standard_library
 standard_library.install_aliases()
-from qtpandas.compat import Qt, QtCore, QtGui
+from qt5pandas.compat import Qt, QtCore, QtGui
 
 
 import pytest
-from qtpandas.views.BigIntSpinbox import BigIntSpinbox
+from qt5pandas.views.BigIntSpinbox import BigIntSpinbox
 
 class TestClass(object):
 

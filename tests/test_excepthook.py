@@ -6,12 +6,12 @@ from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
 standard_library.install_aliases()
-from qtpandas.compat import Qt, QtCore, QtGui
+from qt5pandas.compat import Qt, QtCore, QtGui
 
 import pytest
 import pytestqt
 import sys
-from qtpandas.excepthook import excepthook
+from qt5pandas.excepthook import excepthook
 
 # TODO write it with pytest...
 
@@ -38,7 +38,7 @@ widget.clicked.connect(exception2)
 widget.clicked.connect(exception3)
 widget.clicked.connect(exception4)
 app.exec_()
-        
+
 
 #@pytest.fixture()
 #def overwriteExcepthook():
@@ -50,14 +50,14 @@ app.exec_()
         #widget = QtGui.QWidget()
         #qtbot.addWidget(widget)
         #widget.show()
-        
+
     #def test_overwrite(self, overwriteExcepthook):
         #assert True
-        
+
     #def test_raising(self, qtbot, overwriteExcepthook):
         #raise ValueError, "Test Test ä"
         #with pytest.raises(ValueError) as excinfo:
             #raise ValueError, "Test Test ä"
-        
+
         #with pytest.raises(ValueError) as excinfo:
             #raise ValueError, u"Test Test ä"
