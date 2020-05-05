@@ -1,0 +1,3 @@
+recursive-include qt5pandas *.py
+recursive-include qt5pandas/_lib *
+prune examples/sample?/build/tests
