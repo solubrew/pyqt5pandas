@@ -7,7 +7,7 @@ from __future__ import absolute_import
 from builtins import str
 from future import standard_library
 standard_library.install_aliases()
-from qt5pandas.compat import Qt, QtCore, QtGui
+from pyqt5pandas.compat import Qt, QtCore, QtGui
 
 
 import pytest
@@ -17,9 +17,9 @@ import decimal
 import numpy
 import pandas
 
-from qt5pandas.models.ColumnDtypeModel import ColumnDtypeModel, DTYPE_ROLE
-from qt5pandas.models.SupportedDtypes import SupportedDtypes
-from qt5pandas.views.CustomDelegates import DtypeComboDelegate
+from pyqt5pandas.models.ColumnDtypeModel import ColumnDtypeModel, DTYPE_ROLE
+from pyqt5pandas.models.SupportedDtypes import SupportedDtypes
+from pyqt5pandas.views.CustomDelegates import DtypeComboDelegate
 
 
 @pytest.fixture()

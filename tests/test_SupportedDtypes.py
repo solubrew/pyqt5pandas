@@ -7,7 +7,7 @@ from future import standard_library
 standard_library.install_aliases()
 import numpy
 import pytest
-from qt5pandas.models.SupportedDtypes import SupportedDtypes, SupportedDtypesTranslator
+from pyqt5pandas.models.SupportedDtypes import SupportedDtypes, SupportedDtypesTranslator
 
 @pytest.fixture()
 def expected_support():

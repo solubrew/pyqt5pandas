@@ -6,12 +6,12 @@ from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
 standard_library.install_aliases()
-from qt5pandas.compat import Qt, QtCore, QtGui
+from pyqt5pandas.compat import Qt, QtCore, QtGui
 
 import pytest
 import pytestqt
 import sys
-from qt5pandas.excepthook import excepthook
+from pyqt5pandas.excepthook import excepthook
 
 # TODO write it with pytest...
 
