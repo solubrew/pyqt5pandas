@@ -7,7 +7,7 @@ standard_library.install_aliases()
 import os
 import pytest
 import pandas as pd
-from qt5pandas.models.DataFrameModelManager import DataFrameModelManager
+from pyqt5pandas.models.DataFrameModelManager import DataFrameModelManager
 
 
 
