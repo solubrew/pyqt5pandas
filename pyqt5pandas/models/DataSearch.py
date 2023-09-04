@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import sys
-import parser
 import re
 
 import numpy as np

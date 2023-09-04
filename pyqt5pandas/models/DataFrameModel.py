@@ -20,7 +20,7 @@
 #================================Core Modules===================================||
 from datetime import datetime
 #===============================================================================||
-import pandas, numpy, parser, re
+import pandas, numpy, re
 #===============================================================================||
 from pyqt5pandas.utils import superReadFile
 from pyqt5pandas.compat import Qt, QtCore, QtGui, Slot, Signal
